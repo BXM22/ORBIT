@@ -1,0 +1,48 @@
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables / secrets
+.env
+.env.*
+!.env.example
+
+# Practice scripts
+extract.py
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+
+# Jupyter
+.ipynb_checkpoints/
+
+# Logs and local data
+*.log
+*.db
+*.sqlite3
+
+# dbt (roadmap)
+target/
+dbt_packages/
+logs/
+
+# Airflow (roadmap)
+airflow.db
+airflow-webserver.pid
+
+# Editors / OS
+.vscode/
+.idea/
+.cursor/
+.claude-flow/
+.DS_Store

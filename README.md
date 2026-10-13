@@ -1,0 +1,34 @@
+# ORBIT
+
+A minimal data pipeline that tracks the International Space Station.
+
+## Purpose
+I built this to learn the core patterns behind production data pipelines
+(extract, validate, load, transform) in the smallest form that still works.
+It's intentionally simple so I can grow it step by step.
+
+## What it does
+- **Extracts** the ISS's current position from the Where The ISS At API
+- **Validates** each reading (latitude, longitude, altitude range) before storing it
+- **Loads** it into Postgres, skipping duplicates, so re-running is safe
+- **Summarizes** the data in a SQL view (daily readings, average speed, max altitude)
+
+## Stack
+Python · PostgreSQL · SQL · Docker Compose
+
+## How to run
+```bash
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+docker compose up -d
+docker compose exec -T db psql -U postgres -d iss < schema.sql  # create the table (once)
+docker compose exec -T db psql -U postgres -d iss < summary.sql # create the summary view (once)
+./run.sh          # run once
+./run.sh install  # run every 10 minutes
+```
+
+## Roadmap
+- [ ] Add a data freshness check
+- [ ] Orchestrate with Airflow (scheduling and retries)
+- [ ] Move the SQL into dbt models with automated tests
+- [ ] Dashboard on top of the summary view
