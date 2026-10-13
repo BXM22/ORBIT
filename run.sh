@@ -27,7 +27,7 @@ check_freshness() {
 
   if [ "$age" -gt "$MAX_AGE" ]; then
     echo "$(date '+%F %T') STALE: newest reading is ${age}s old (limit ${MAX_AGE}s)"
-    osascript -e 'display notification "ISS pipeline looks stalled. Check pipeline.log" with title "iss-pipeline"' 2>/dev/null || true
+    osascript -e 'display notification "ISS pipeline looks stalled. Check pipeline.log" with title "ORBIT"' 2>/dev/null || true
     exit 1
   fi
   echo "$(date '+%F %T') OK: newest reading is ${age}s old"
