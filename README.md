@@ -27,6 +27,9 @@ docker compose exec -T db psql -U postgres -d iss < summary.sql # create the sum
 ./run.sh install  # run every 10 minutes
 ```
 
+## Acknowledgements
+The `run.sh` script was developed with help from [Claude](https://claude.ai), an AI assistant by Anthropic.
+
 ## Roadmap
 - [ ] Add a data freshness check
 - [ ] Orchestrate with Airflow (scheduling and retries)
