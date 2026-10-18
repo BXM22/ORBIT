@@ -1,3 +1,4 @@
+from exceptions import ValidationError
 import requests
 import psycopg2  #this is for postgres
 
@@ -9,7 +10,7 @@ def extract():
     resp.raise_for_status()
     return resp.json() #getting the data
 
-def validate(p):
+def validate(p:dict ):
     # stop the script if a value is outside the possible range
     assert -90 <= p["latitude"] <= 90, f"bad latitude: {p['latitude']}"
     assert -180 <= p["longitude"] <= 180, f"bad longitude: {p['longitude']}"

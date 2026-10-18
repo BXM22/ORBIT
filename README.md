@@ -20,9 +20,7 @@ Python · PostgreSQL · SQL · Docker Compose
 ```bash
 python3 -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-docker compose up -d
-docker compose exec -T db psql -U postgres -d iss < schema.sql  # create the table (once)
-docker compose exec -T db psql -U postgres -d iss < summary.sql # create the summary view (once)
+docker compose up -d  # first start also creates the table and view from sql/
 ./run.sh          # run once
 ./run.sh install  # run every 10 minutes
 ```
