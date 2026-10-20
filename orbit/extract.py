@@ -1,5 +1,6 @@
-import requests
 import logging
+
+import requests
 
 from orbit.config import API
 

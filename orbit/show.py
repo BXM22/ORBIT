@@ -4,6 +4,7 @@ import psycopg2
 
 from orbit.config import DSN
 
+
 def latest(n=10):
     with psycopg2.connect(DSN) as conn, conn.cursor() as cur:
         cur.execute(

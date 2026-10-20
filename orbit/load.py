@@ -1,5 +1,7 @@
-import psycopg2  #this is for postgres
 import logging
+
+import psycopg2  #this is for postgres
+
 from orbit.config import DSN
 
 log = logging.getLogger(__name__)

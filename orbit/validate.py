@@ -1,5 +1,6 @@
 from orbit.exceptions import ValidationError
 
+
 def validate(p: dict) -> None:
     errors = []
     if not (-90 <= p["latitude"] <= 90):

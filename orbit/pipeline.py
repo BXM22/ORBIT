@@ -1,8 +1,9 @@
+import logging
+
 from orbit.exceptions import ValidationError
 from orbit.extract import extract
-from orbit.validate import validate
 from orbit.load import load
-import logging
+from orbit.validate import validate
 
 log = logging.getLogger("orbit")
 
