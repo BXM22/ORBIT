@@ -15,7 +15,7 @@ run_pipeline() {
   until docker compose exec -T db pg_isready -U postgres -d iss > /dev/null 2>&1; do
     sleep 1
   done
-  .venv/bin/python pipeline.py
+  .venv/bin/python -m orbit.pipeline
 }
 
 check_freshness() {

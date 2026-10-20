@@ -1,11 +1,11 @@
 # ORBIT Dashboard Roadmap — a step-by-step tutorial
 
 This is the README's "dashboard on top of the summary view" roadmap item,
-written as a guided exercise like `docs/HARDENING_ROADMAP.md`. Work through
+written as a guided exercise like `docs/hardening/README.md`. Work through
 it yourself — each step shows what to build and why, with a worked example,
 and a check before moving on.
 
-**Do this after** the testing/observability work in `HARDENING_ROADMAP.md`,
+**Do this after** the testing/observability work in `hardening/README.md`,
 or at least after Steps 1–3 of it (structured validation, logging, env
 config). A dashboard reads from the pipeline's output — it's easier to
 trust and debug that output once the pipeline itself logs clearly and
@@ -39,9 +39,10 @@ it gives you request/response validation and auto-generated docs
 (`/docs`) for almost no code — useful while you're still learning what
 shape your frontend needs the data in.
 
-**What to create:** `api.py` at the repo root (sibling to `pipeline.py`,
-same flat-layout reasoning as `exceptions.py` — one file doesn't need a
-package yet).
+**What to create:** `api.py` at the repo root, next to the `orbit/` package
+rather than inside it. The API is a separate service that only reads from
+the database; keeping it out of `orbit/` means the pipeline package doesn't
+pick up a FastAPI dependency.
 
 ```python
 # api.py
@@ -91,7 +92,7 @@ def daily_summary():
     return [dict(zip(cols, r)) for r in rows]
 ```
 
-Note this reuses `ORBIT_DSN` the same way `pipeline.py` does (Step 3 of the
+Note this reuses `ORBIT_DSN` the same way `orbit/config.py` does (Step 3 of the
 hardening roadmap) — the two services share config, not code, which is fine
 at this size.
 
@@ -266,5 +267,5 @@ iss_daily_summary ORDER BY day DESC LIMIT 14;` directly in `psql`.
 - Update the README roadmap checkbox for "dashboard on top of the summary
   view."
 - Consider whether `api.py` wants its own tests (same mocking approach as
-  `pipeline.py` — see `docs/HARDENING_ROADMAP.md` Steps 4–6) once it has
+  the `orbit/` modules — see `docs/hardening/` Steps 4–6) once it has
   more than two endpoints.

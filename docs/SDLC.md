@@ -18,7 +18,7 @@ for making a change, without having to re-derive it from scratch each time.
   fix.
 - For anything non-trivial (new feature, schema change, new dependency),
   write a short plan first — a few sentences on what's changing and why is
-  enough. `docs/HARDENING_ROADMAP.md` is an example of this for the current
+  enough. `docs/hardening/README.md` is an example of this for the current
   testing/observability work.
 
 ## 3. Design
@@ -26,11 +26,14 @@ for making a change, without having to re-derive it from scratch each time.
 - Default to the flat repo layout and stdlib tools. Only reach for a new
   framework, directory structure, or dependency when the current approach is
   actually in the way — not because a "real" project would have it.
-- Example of this principle already applied: `pipeline.py` stays at the repo
-  root instead of moving into `src/orbit/` — one ~35-line module doesn't
-  justify packaging overhead (`__init__.py`, import path changes, a
-  `pyproject.toml`). Revisit this once a second Python module exists (e.g.
-  when dbt or Airflow integration lands).
+- Example of this principle applied: the pipeline started as a single
+  root-level `pipeline.py`. It moved into the `orbit/` package (one module
+  per step: `extract`, `validate`, `load`, plus `config`, `exceptions`, and
+  a thin `pipeline` orchestrator) only once tests were about to be written
+  against it, so test imports and `@patch` targets wouldn't need rewriting
+  later. It's still a plain folder with an `__init__.py` — no `src/` layout
+  or `pyproject.toml` until something actually needs them. See
+  `docs/CODE_STRUCTURE.md`.
 - Document deferred-but-considered ideas in the README roadmap so the
   reasoning isn't lost.
 
@@ -72,7 +75,7 @@ for making a change, without having to re-derive it from scratch each time.
   after any schema change to an existing database.
 - `./run.sh install` schedules the pipeline (every 10 min) and the freshness
   check (every 30 min) via cron — or via `launchd` if the project migrates
-  off cron (see the cron bug note in `docs/HARDENING_ROADMAP.md`).
+  off cron (see the cron bug note in `docs/hardening/README.md`).
 
 ## 8. Monitoring / Maintenance
 

@@ -25,6 +25,24 @@ docker compose up -d  # first start also creates the table and view from sql/
 ./run.sh install  # run every 10 minutes
 ```
 
+To run the pipeline by hand (the database must already be up), use
+`python -m orbit.pipeline` from the repo root.
+
+## Project layout
+```
+orbit/
+├── config.py      # API url and database connection string
+├── exceptions.py  # ValidationError
+├── extract.py     # extract(): fetch the current position
+├── validate.py    # validate(): range checks
+├── load.py        # load(): insert into Postgres
+└── pipeline.py    # main(): extract -> validate -> load
+sql/               # table and summary view, run on first database start
+docs/              # roadmaps and design notes
+run.sh             # run, schedule, and freshness check
+```
+See [docs/CODE_STRUCTURE.md](docs/CODE_STRUCTURE.md) for why it's split this way.
+
 ## Acknowledgements
 The `run.sh` script was developed with help from [Claude](https://claude.ai), an AI assistant by Anthropic.
 

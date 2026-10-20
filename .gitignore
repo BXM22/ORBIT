@@ -9,7 +9,7 @@ env/
 !.env.example
 
 # Practice scripts
-extract.py
+/extract.py
 
 # Python
 __pycache__/
