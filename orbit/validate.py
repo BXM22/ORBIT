@@ -1,5 +1,12 @@
-def validate(p:dict ):
-    # stop the script if a value is outside the possible range
-    assert -90 <= p["latitude"] <= 90, f"bad latitude: {p['latitude']}"
-    assert -180 <= p["longitude"] <= 180, f"bad longitude: {p['longitude']}"
-    assert 300 <= p["altitude"] <= 500, f"bad altitude: {p['altitude']}"
+from orbit.exceptions import ValidationError
+
+def validate(p: dict) -> None:
+    errors = []
+    if not (-90 <= p["latitude"] <= 90):
+        errors.append(f"latitude out of range: {p['latitude']}")
+    if not (-180 <= p["longitude"] <= 180):
+        errors.append(f"longitude out of range: {p['longitude']}")
+    if not (300 <= p["altitude"] <= 500):
+        errors.append(f"altitude out of range: {p['altitude']}")
+    if errors:
+        raise ValidationError("; ".join(errors))
