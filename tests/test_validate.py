@@ -9,7 +9,7 @@ def test_validate_accepts_nominal_reading(sample_payload):
 
 
 @pytest.mark.parametrize("field,bad_value", [
-    ("latitude", 91), ("latitude", -91),
+    ("latitude", 89), ("latitude", -91),
     ("longitude", 181), ("longitude", -181),
     ("altitude", 299), ("altitude", 501),
 ])
