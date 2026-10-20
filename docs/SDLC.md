@@ -18,7 +18,7 @@ for making a change, without having to re-derive it from scratch each time.
   fix.
 - For anything non-trivial (new feature, schema change, new dependency),
   write a short plan first — a few sentences on what's changing and why is
-  enough. `docs/hardening/README.md` is an example of this for the current
+  enough. `docs/HARDENING.md` is an example of this for the current
   testing/observability work.
 
 ## 3. Design
@@ -75,7 +75,7 @@ for making a change, without having to re-derive it from scratch each time.
   after any schema change to an existing database.
 - `./run.sh install` schedules the pipeline (every 10 min) and the freshness
   check (every 30 min) via cron — or via `launchd` if the project migrates
-  off cron (see the cron bug note in `docs/hardening/README.md`).
+  off cron (see Step 9 in `docs/HARDENING.md`).
 
 ## 8. Monitoring / Maintenance
 

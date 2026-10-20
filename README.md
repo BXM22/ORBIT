@@ -71,7 +71,7 @@ See [docs/CODE_STRUCTURE.md](docs/CODE_STRUCTURE.md) for why it's split this way
 The `run.sh` script was developed with help from [Claude](https://claude.ai), an AI assistant by Anthropic.
 
 ## Roadmap
-- [ ] Add a data freshness check
+- [x] Add a data freshness check
 - [ ] Orchestrate with Airflow (scheduling and retries)
 - [ ] Move the SQL into dbt models with automated tests
 - [ ] Dashboard on top of the summary view

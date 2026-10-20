@@ -24,8 +24,9 @@ Other changes made with the split:
 - `run.sh` runs `.venv/bin/python -m orbit.pipeline` instead of `pipeline.py`.
 - The root-level `pipeline.py` and `exceptions.py` were removed (`git mv`, so
   their history follows them into `orbit/`).
-- `docs/hardening/` Steps 1–9 now name the new files, imports, and `@patch`
-  targets, and Step 4's `pytest.ini` includes `pythonpath = .`.
+- The hardening roadmap (now `docs/HARDENING.md`) names the new files,
+  imports, and `@patch` targets, and Step 4's `pytest.ini` includes
+  `pythonpath = .`.
 - `docs/SDLC.md`, `docs/DASHBOARD_ROADMAP.md`, and `README.md` describe the
   new layout.
 
@@ -35,9 +36,9 @@ same way, and `main()` passes the same values to the `INSERT`.
 The rest of this guide is kept as the reasoning behind the layout and as a
 reference for the code examples, which show the end state after Steps 1–3.
 
-**Originally planned timing:** after [Step 3](hardening/03-env-var-dsn.md) of the
+**Originally planned timing:** after [Step 3](HARDENING.md#3-read-the-dsn-from-an-environment-variable) of the
 hardening roadmap (logging and the env-var DSN are in) and **before**
-[Step 4](hardening/04-unit-test-validate.md). Splitting before Step 4 means your
+[Step 4](HARDENING.md#4-unit-test-validate). Splitting before Step 4 means your
 tests are written against the final import paths and you don't rewrite their
 `@patch` targets later.
 

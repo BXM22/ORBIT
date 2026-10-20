@@ -1,11 +1,11 @@
 # ORBIT Dashboard Roadmap — a step-by-step tutorial
 
 This is the README's "dashboard on top of the summary view" roadmap item,
-written as a guided exercise like `docs/hardening/README.md`. Work through
+written as a guided exercise like `docs/HARDENING.md`. Work through
 it yourself — each step shows what to build and why, with a worked example,
 and a check before moving on.
 
-**Do this after** the testing/observability work in `hardening/README.md`,
+**Do this after** the testing/observability work in `HARDENING.md`,
 or at least after Steps 1–3 of it (structured validation, logging, env
 config). A dashboard reads from the pipeline's output — it's easier to
 trust and debug that output once the pipeline itself logs clearly and
@@ -267,5 +267,5 @@ iss_daily_summary ORDER BY day DESC LIMIT 14;` directly in `psql`.
 - Update the README roadmap checkbox for "dashboard on top of the summary
   view."
 - Consider whether `api.py` wants its own tests (same mocking approach as
-  the `orbit/` modules — see `docs/hardening/` Steps 4–6) once it has
+  the `orbit/` modules — see `docs/HARDENING.md` Steps 4–6) once it has
   more than two endpoints.
