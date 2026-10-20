@@ -38,9 +38,19 @@ orbit/
 ├── load.py        # load(): insert into Postgres
 └── pipeline.py    # main(): extract -> validate -> load
 sql/               # table and summary view, run on first database start
+tests/             # pytest suite (unit + integration)
 docs/              # roadmaps and design notes
 run.sh             # run, schedule, and freshness check
 ```
+
+## Tests
+```bash
+pip install -r requirements-dev.txt
+pytest                  # unit tests, no Docker needed
+pytest -m integration   # needs `docker compose up -d`
+```
+See [docs/TESTING.md](docs/TESTING.md) for what each test covers.
+
 See [docs/CODE_STRUCTURE.md](docs/CODE_STRUCTURE.md) for why it's split this way.
 
 ## Acknowledgements

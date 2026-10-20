@@ -1,7 +1,8 @@
 import psycopg2  #this is for postgres
-
+import logging
 from orbit.config import DSN
 
+log = logging.getLogger(__name__)
 def load(p):
     #this will open the connection to the postgres
     with psycopg2.connect(DSN) as conn, conn.cursor() as cur:
@@ -14,3 +15,7 @@ def load(p):
             """,
             (p["timestamp"], p["latitude"], p["longitude"], p["altitude"], p["velocity"]),
         )
+        if cur.rowcount == 1:
+            log.info("inserted new row for %s", p["timestamp"])
+        else:
+            log.info("duplicate reading for %s, skipped", p["timestamp"])
